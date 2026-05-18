@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanny's Soulfood - Proef de authentieke smaken van Suriname</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display for headers, Alex Brush for signature, Inter for clean menu text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        cursive: ['"Alex Brush"', 'cursive'],
+                    },
+                    colors: {
+                        dark: {
+                            DEFAULT: '#110b08',
+                            card: '#1b120d',
+                            border: '#2a1e17',
+                        },
+                        gold: {
+                            light: '#f3e5ab',
+                            DEFAULT: '#d4af37',
+                            dark: '#aa820a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom smooth gold text gradient & background glow effects */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa820a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .border-gold-gradient {
+            border-image: linear-gradient(to right, #aa820a, #f3e5ab, #aa820a) 1;
+        }
+        /* Custom scrollbar to match dark aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #110b08;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #aa820a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
+    </style>
+</head>
+<body class="bg-dark text-stone-100 font-sans antialiased selection:bg-gold selection:text-dark">
+
+    <!-- Background Ambient Glows -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-gold/5 blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-amber-900/10 blur-[120px]"></div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="relative z-10 border-b border-dark-border bg-dark/80 backdrop-blur-md sticky top-0">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <!-- Elegant Winged Logo -->
+            <div class="flex flex-col items-center sm:items-start">
+                <div class="flex items-center gap-2">
+                    <!-- SVG Wing Icon Left -->
+                    <svg class="w-8 h-8 text-gold" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 .79c3.62.48 6.5 3.36 6.98 6.98C18.23 6.92 15.82 4.14 13 2.79zM11 2.79C8.18 4.14 5.77 6.92 6.02 9.77 6.5 6.15 9.38 3.27 11 2.79z"/>
+                    </svg>
+                    <span class="font-serif text-xl tracking-widest text-gold font-bold">VANNY'S SOULFOOD</span>
+                </div>
+                <span class="text-[10px] tracking-[0.25em] text-stone-400 uppercase">A taste for your soul</span>
+            </div>
+            
+            <!-- Quick Contacts (Email & Instagram) -->
+            <div class="flex items-center gap-6">
+                <a href="mailto:vannyssoulfood@gmail.com" class="text-stone-300 hover:text-gold transition-all duration-300 text-sm flex items-center gap-2">
+                    <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    <span class="hidden md:inline">vannyssoulfood@gmail.com</span>
+                    <span class="md:hidden">Email</span>
+                </a>
+                <a href="https://www.instagram.com/vannyssoulfood" target="_blank" rel="noopener noreferrer" class="text-stone-300 hover:text-gold transition-all duration-300 text-sm flex items-center gap-2">
+                    <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    <span>Instagram</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative z-10 max-w-6xl mx-auto px-6 pt-12 pb-20 text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/30 bg-gold/5 mb-6">
+            <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+            <span class="text-xs tracking-wider text-gold-light uppercase font-medium">Met liefde bereid, met zorg en smaak geserveerd</span>
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-none mb-6">
+            Proef de authentieke <br class="hidden sm:inline">
+            <span class="text-gold-gradient font-normal italic">smaken van Suriname</span>
+        </h1>
+
+        <!-- Caterings bullets -->
+        <p class="text-stone-300 text-base sm:text-lg max-w-3xl mx-auto mb-10 leading-relaxed font-light">
+            Bedrijfscatering <span class="text-gold mx-1.5">•</span> 
+            Partijtjes <span class="text-gold mx-1.5">•</span> 
+            Babyshowers <span class="text-gold mx-1.5">•</span> 
+            Begrafenissen <span class="text-gold mx-1.5">•</span> 
+            Bezorging op locatie
+        </p>
+
+        <!-- CTAs strictly to the requested links -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="mailto:vannyssoulfood@gmail.com?subject=Offerte%20Aanvraag%20-%20Vanny's%20Soulfood" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-gold-dark via-gold to-gold-dark text-dark font-semibold rounded-lg shadow-lg hover:shadow-gold/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-center">
+                Vraag een offerte aan via Mail
+            </a>
+            <a href="https://www.instagram.com/vannyssoulfood" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 bg-dark-card border border-gold/30 hover:border-gold text-stone-100 rounded-lg hover:bg-dark-border hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2">
+                <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                Volg ons op Instagram
+            </a>
+        </div>
+    </section>
+
+    <!-- Vanessa Story Section -->
+    <section class="relative z-10 border-t border-dark-border bg-gradient-to-b from-dark via-dark-card to-dark py-20">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                
+                <!-- Chef Portrait Card (with actual image) -->
+                <div class="md:col-span-5 relative group">
+                    <div class="absolute -inset-1.5 bg-gradient-to-r from-gold/30 to-amber-900/30 rounded-2xl blur opacity-70 group-hover:opacity-100 transition duration-1000"></div>
+                    <div class="relative bg-dark-card border border-dark-border p-4 rounded-xl text-center">
+                        <div class="w-full aspect-[4/5] bg-neutral-900 rounded-lg overflow-hidden border border-gold/10 relative">
+                            <!-- Chef Image -->
+                            <img src="afbeelding.png" alt="Vanessa - Vanny's Soulfood" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" onerror="this.style.display='none'; document.getElementById('portrait-fallback').style.display='flex';">
+                            
+                            <!-- Elegant Fallback SVG in case image fails to load -->
+                            <div id="portrait-fallback" class="absolute inset-0 hidden flex-col items-center justify-center p-6 bg-neutral-900">
+                                <div class="relative mb-4">
+                                    <div class="w-24 h-24 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center">
+                                        <svg class="w-12 h-12 text-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="absolute -bottom-2 -right-2 bg-gold text-dark p-1.5 rounded-full">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 3c-1.2 0-2.4 1-3 2H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2h-4c-.6-1-1.8-2-3-2zm0 4c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h3 class="font-serif text-xl text-gold font-medium">Vanessa</h3>
+                                <p class="text-xs text-stone-400 mt-1 uppercase tracking-widest">Gepassioneerde Kok</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Portrait Details below image -->
+                        <div class="mt-4">
+                            <h3 class="font-serif text-xl text-gold font-medium">Vanessa</h3>
+                            <p class="text-xs text-stone-400 mt-1 uppercase tracking-widest">Gepassioneerde Kok</p>
+                            
+                            <div class="mt-4 pt-3 border-t border-dark-border w-full flex justify-center gap-4 text-xs text-stone-400">
+                                <span>Surinaamse Keuken</span>
+                                <span>•</span>
+                                <span>Smaak & Traditie</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story Text -->
+                <div class="md:col-span-7 flex flex-col justify-center">
+                    <h2 class="font-serif text-3xl font-semibold mb-6 text-gold-gradient">Met liefde uit de Surinaamse keuken</h2>
+                    <div class="text-stone-300 space-y-4 leading-relaxed font-light">
+                        <p>
+                            Mijn naam is <strong class="text-gold font-normal">Vanessa</strong>, trotse Surinaamse en gepassioneerde kok.
+                        </p>
+                        <p>
+                            De Surinaamse keuken zit vol cultuur, smaak en traditie. Die warmte breng ik met zorg en aandacht naar elke tafel.
+                        </p>
+                        <p>
+                            Elk gerecht wordt vers bereid volgens authentieke recepten – precies zoals het hoort.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-dark-border">
+                        <p class="font-serif italic text-xl text-gold-light">...je proeft liefde.</p>
+                        <div class="mt-4">
+                            <p class="text-xs text-stone-400 uppercase tracking-widest mb-1">Met warme groet,</p>
+                            <p class="font-cursive text-4xl text-gold">Liefs, Vanessa</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section (The central focus) -->
+    <section class="relative z-10 py-24 bg-dark">
+        <div class="max-w-6xl mx-auto px-6">
+            
+            <!-- Menu Header -->
+            <div class="text-center mb-16">
+                <span class="text-xs uppercase tracking-[0.25em] text-gold font-semibold">Catering Kaart</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold mt-2 text-stone-100">Ons Menu</h2>
+                <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-4"></div>
+            </div>
+
+            <!-- Menu Grid Layout -->
+            <div class="grid lg:grid-cols-3 gap-8 items-start">
+                
+                <!-- Section 1: Party Bak -->
+                <div class="bg-dark-card rounded-2xl p-6 md:p-8 border border-dark-border hover:border-gold/30 transition-all duration-300 h-full flex flex-col justify-between">
+                    <div>
+                        <div class="border-b border-dark-border pb-4 mb-6">
+                            <span class="text-xs text-gold uppercase tracking-widest font-semibold block mb-1">Voor 20 – 40 personen</span>
+                            <h3 class="font-serif text-2xl font-bold text-stone-100">PARTY BAK</h3>
+                        </div>
+                        
+                        <!-- Party Bak List -->
+                        <ul class="space-y-4">
+                            <li class="flex flex-col">
+                                <div class="flex justify-between items-baseline">
+                                    <span class="font-medium text-stone-200">NASI</span>
+                                    <span class="text-gold font-semibold">€ 75,- / € 85,-</span>
+                                </div>
+                            </li>
+                            <li class="flex flex-col">
+                                <div class="flex justify-between items-baseline">
+                                    <span class="font-medium text-stone-200">BAMI</span>
+                                    <span class="text-gold font-semibold">€ 75,- / € 85,-</span>
+                                </div>
+                            </li>
+                            <li class="flex flex-col">
+                                <div class="flex justify-between items-baseline">
+                                    <span class="font-medium text-stone-200">MASOUS</span>
+                                    <span class="text-gold font-semibold">€ 75,- / € 85,-</span>
+                                </div>
+                            </li>
+                            <li class="flex flex-col">
+                                <div class="flex justify-between items-baseline">
+                                    <span class="font-medium text-stone-200">MOKSI ALESI</span>
+                                    <span class="text-gold font-semibold">€ 100,- / € 125,-</span>
+                                </div>
+                            </li>
+                            <li class="flex flex-col">
+                                <div class="flex justify-between items-baseline">
+                                    <span class="font-medium text-stone-200">KAP KAP METI</span>
+                                    <span class="text-gold font-semibold">€ 75,- / € 100,-</span>
+                                </div>
+                            </li>
+                            <li class="flex flex-col">
+                                <div class="flex justify-between items-baseline">
+                                    <span class="font-medium text-stone-200">VSF WINGS</span>
+                                    <span class="text-gold font-semibold">€ 75,- / € 100,-</span>
+                                </div>
+                            </li>
+                            <li class="flex flex-col">
+                                <div class="flex justify-between items-baseline">
+                                    <span class="font-medium text-stone-200">GROENTEN</span>
+                                    <span class="text-gold font-semibold">€ 80,-</span>
+                                </div>
+                            </li>
+                            <li class="flex flex-col">
+                                <div class="flex justify-between items-baseline">
+                                    <span class="font-medium text-stone-200">SURINAAMSE GROENTEN</span>
+                                    <span class="text-gold font-semibold">Vanaf € 100,-</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Mini portions mentioned in flyer 2 -->
+                    <div class="mt-8 pt-6 border-t border-dark-border bg-dark/30 p-4 rounded-lg">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-stone-400">Medium schaal</span>
+                            <span class="text-gold font-semibold">€ 25,-</span>
+                        </div>
+                        <div class="flex justify-between text-sm mt-2">
+                            <span class="text-stone-400">Large schaal</span>
+                            <span class="text-gold font-semibold">€ 85,-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Snacks -->
+                <div class="bg-dark-card rounded-2xl p-6 md:p-8 border border-dark-border hover:border-gold/30 transition-all duration-300 h-full flex flex-col justify-between">
+                    <div>
+                        <div class="border-b border-dark-border pb-4 mb-6">
+                            <span class="text-xs text-gold uppercase tracking-widest font-semibold block mb-1">Kleine lekkernijen</span>
+                            <h3 class="font-serif text-2xl font-bold text-stone-100">SNACKS</h3>
+                        </div>
+                        
+                        <!-- Snacks List -->
+                        <ul class="space-y-4">
+                            <li class="flex justify-between items-baseline">
+                                <span class="font-medium text-stone-200">Loempia</span>
+                                <span class="text-gold font-semibold">€ 1,75</span>
+                            </li>
+                            <li class="flex justify-between items-baseline">
+                                <span class="font-medium text-stone-200">Pastei kip</span>
+                                <span class="text-gold font-semibold">€ 3,00</span>
+                            </li>
+                            <li class="flex justify-between items-baseline">
+                                <span class="font-medium text-stone-200">Saté</span>
+                                <span class="text-gold font-semibold">€ 3,00</span>
+                            </li>
+                            <li class="flex justify-between items-baseline">
+                                <span class="font-medium text-stone-200">Garnalen saté</span>
+                                <span class="text-gold font-semibold">€ 3,50</span>
+                            </li>
+                            <li class="flex justify-between items-baseline">
+                                <span class="font-medium text-stone-200">Pasta salade</span>
+                                <span class="text-gold font-semibold">€ 5,50</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-8 p-4 rounded-lg bg-gold/5 border border-gold/10 text-center">
+                        <p class="text-xs text-gold-light italic">
+                            * Alle snacks worden geserveerd met bijbehorende saus.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section 3: P.P. Porties -->
+                <div class="bg-dark-card rounded-2xl p-6 md:p-8 border border-dark-border hover:border-gold/30 transition-all duration-300 h-full flex flex-col justify-between">
+                    <div>
+                        <div class="border-b border-dark-border pb-4 mb-6">
+                            <span class="text-xs text-gold uppercase tracking-widest font-semibold block mb-1">Per Persoon</span>
+                            <h3 class="font-serif text-2xl font-bold text-stone-100">P.P. PORTIES</h3>
+                        </div>
+                        
+                        <!-- P.P. Porties List -->
+                        <ul class="space-y-3.5">
+                            <li class="flex justify-between items-baseline">
+                                <span class="font-medium text-stone-200">Bami</span>
+                                <span class="text-gold font-semibold">€ 15,00</span>
+                            </li>
+                            <li class="flex justify-between items-baseline">
+                                <span class="font-medium text-stone-200">Nasi</span>
+                                <span class="text-gold font-semibold">€ 15,00</span>
+                            </li>
+                            <li class="flex justify-between items-baseline">
+                                <span class="font-medium text-stone-200">Masous</span>
+                                <span class="text-gold font-semibold">€ 18,00</span>
+                            </li>
+                            <li class="flex justify-between items-baseline">
+                                <span class="font-medium text-stone-200">Moksi Alesi</span>
+                                <span class="text-gold font-semibold">€ 18,00</span>
+                            </li>
+                            <li class="flex justify-between items-baseline">
+                                <div class="flex flex-col">
+                                    <span class="font-medium text-stone-200">Witte Nasi</span>
+                                    <span class="text-[10px] text-stone-400">Batajaw</span>
+                                </div>
+                                <span class="text-gold font-semibold">€ 18,00</span>
+                            </li>
+                            <li class="flex justify-between items-baseline">
+                                <span class="font-medium text-stone-200">Rijst Pom Pastei</span>
+                                <span class="text-gold font-semibold">€ 20,00</span>
+                            </li>
+                            <li class="flex justify-between items-baseline">
+                                <span class="font-medium text-stone-200">Roti Kip</span>
+                                <span class="text-gold font-semibold">€ 20,00</span>
+                            </li>
+                            <li class="flex justify-between items-baseline">
+                                <span class="font-medium text-stone-200">Her Heri</span>
+                                <span class="text-gold font-semibold">€ 20,00</span>
+                            </li>
+                            <li class="flex justify-between items-baseline">
+                                <span class="font-medium text-stone-200">Vis Cassave/Banaan</span>
+                                <span class="text-gold font-semibold">€ 25,00</span>
+                            </li>
+                            <li class="flex justify-between items-baseline">
+                                <span class="font-medium text-stone-200">Diverse soepen</span>
+                                <span class="text-gold font-semibold">€ 9,50</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-6 p-4 rounded-lg bg-gold/5 border border-gold/10 text-center">
+                        <p class="text-[11px] text-gold-light italic leading-relaxed">
+                            * Alle gerechten worden geserveerd met zuur, sambal & pinda- en/of ketjapsaus.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Warm tagline below menu -->
+            <div class="text-center mt-12">
+                <p class="font-serif italic text-lg text-stone-300">Met liefde bereid, met zorg geserveerd.</p>
+                <p class="font-cursive text-3xl text-gold mt-2">Liefs, Vanessa</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Policy & Conditions (Flyer 3) -->
+    <section class="relative z-10 py-16 border-t border-dark-border bg-gradient-to-b from-dark to-dark-card">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-gradient-to-br from-amber-950/20 via-dark-card to-amber-950/20 rounded-2xl border border-gold/20 p-8 md:p-12 relative overflow-hidden">
+                <!-- Golden Accent Border on Top -->
+                <div class="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent"></div>
+                
+                <h3 class="font-serif text-2xl sm:text-3xl text-gold-gradient font-bold text-center mb-8">Belangrijke Informatie bij Bestellen</h3>
+                
+                <div class="grid md:grid-cols-2 gap-8 text-sm md:text-base text-stone-300">
+                    
+                    <div class="space-y-4">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold">1</div>
+                            <p class="leading-relaxed">
+                                Bij iedere bestelling geldt een <strong class="text-gold font-semibold">aanbetaling van € 20,-</strong>.
+                            </p>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold">2</div>
+                            <p class="leading-relaxed">
+                                Het resterende bedrag dient uiterlijk <strong class="text-gold font-semibold">2 weken voor levering</strong> op onze rekening te zijn bijgeschreven.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold">3</div>
+                            <p class="leading-relaxed">
+                                Bezorgkosten worden berekend op basis van de <strong class="text-gold font-semibold">afleverlocatie</strong>.
+                            </p>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold">4</div>
+                            <p class="leading-relaxed">
+                                Neem gerust contact op voor een op maat gemaakte offerte via e-mail of ons contactnummer.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact Options -->
+    <footer class="relative z-10 bg-dark text-stone-400 py-16 border-t border-dark-border">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            
+            <h3 class="font-serif text-3xl text-stone-100 mb-2">Wilt u bestellen of een offerte aanvragen?</h3>
+            <p class="text-sm text-stone-400 max-w-lg mx-auto mb-10">
+                Geef uw gasten een onvergetelijke culinaire ervaring — en proef de liefde van Suriname.
+            </p>
+
+            <!-- Main Direct Contact Options -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12 max-w-3xl mx-auto">
+                
+                <!-- Phone (Static Text, non-link representation) -->
+                <div class="bg-dark-card border border-dark-border rounded-xl p-6 flex flex-col items-center justify-center">
+                    <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center mb-3">
+                        <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-[11px] uppercase tracking-wider text-stone-500 block mb-1">Bellen</span>
+                    <span class="text-stone-200 font-semibold">06 87137693</span>
+                </div>
+
+                <!-- Email Link -->
+                <a href="mailto:vannyssoulfood@gmail.com" class="bg-dark-card border border-dark-border hover:border-gold/30 rounded-xl p-6 flex flex-col items-center justify-center group transition-all duration-300">
+                    <div class="w-10 h-10 rounded-full bg-gold/10 group-hover:bg-gold/20 flex items-center justify-center mb-3 transition-colors">
+                        <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-[11px] uppercase tracking-wider text-stone-500 block mb-1">Vraag offerte aan</span>
+                    <span class="text-stone-200 font-semibold break-all group-hover:text-gold transition-colors">vannyssoulfood@gmail.com</span>
+                </a>
+
+                <!-- Instagram Link -->
+                <a href="https://www.instagram.com/vannyssoulfood" target="_blank" rel="noopener noreferrer" class="bg-dark-card border border-dark-border hover:border-gold/30 rounded-xl p-6 flex flex-col items-center justify-center group transition-all duration-300">
+                    <div class="w-10 h-10 rounded-full bg-gold/10 group-hover:bg-gold/20 flex items-center justify-center mb-3 transition-colors">
+                        <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </div>
+                    <span class="text-[11px] uppercase tracking-wider text-stone-500 block mb-1">Instagram</span>
+                    <span class="text-stone-200 font-semibold group-hover:text-gold transition-colors">@vannyssoulfood</span>
+                </a>
+
+            </div>
+
+            <div class="w-full h-[1px] bg-dark-border my-8"></div>
+            
+            <p class="text-xs text-stone-600">
+                &copy; 2026 Vanny's Soulfood. Met liefde bereid, met zorg en smaak geserveerd.
+            </p>
+
+        </div>
+    </footer>
+
+</body>
+</html>
